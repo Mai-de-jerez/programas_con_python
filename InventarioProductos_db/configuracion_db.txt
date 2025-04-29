@@ -1,0 +1,87 @@
+Instrucciones para configurar la base de datos MySQL y ejecutar la aplicación
+Paso 1: Instalación de MySQL
+
+Si aún no tienes MySQL instalado, sigue estos pasos:
+
+	1. Ve a MySQL Downloads y descarga el instalador de MySQL para tu sistema operativo.
+
+	2. Durante la instalación, selecciona "MySQL Server" y sigue las instrucciones para completar la instalación. Asegúrate de recordar la contraseña del 	root (administrador de la base de datos) que configures durante el proceso de instalación.
+
+Paso 2: Crear la base de datos MySQL
+
+	1. Accede a MySQL desde la línea de comandos o mediante una herramienta de administración de bases de datos como MySQL Workbench o phpMyAdmin.
+
+	2. Si estás usando la línea de comandos, abre la terminal y conéctate a MySQL con el siguiente comando:
+		
+	mysql -u root -p
+
+	Introduce la contraseña de root cuando se te pida.
+
+        3. Crea la base de datos para el inventario:
+
+	CREATE DATABASE inventario_db;
+
+	4. Luego, selecciona la base de datos:
+
+	USE inventario_db;
+
+	5. Crea la tabla productos con la siguiente estructura:
+
+	CREATE TABLE productos (
+   	 Nombre VARCHAR(45) NOT NULL PRIMARY KEY,
+  	 Cantidad INT NOT NULL,
+  	 Precio DECIMAL(10, 2) NOT NULL,
+  	 Categoria VARCHAR(45) NOT NULL
+	);
+
+Paso 3: Configuración del archivo de conexión
+En el código proporcionado, tienes un archivo para gestionar la conexión con la base de datos (conexion.py). Asegúrate de que los datos de conexión estén configurados correctamente:
+
+	Usuario: root (o el nombre de usuario que hayas configurado)
+
+	Contraseña: tucontraseña (o la contraseña que hayas asignado)
+
+	Base de datos: inventario_db
+
+	Puerto: 3306 (puerto por defecto de MySQL)
+
+	Host: localhost
+
+
+	Puedes modificar los valores en el archivo conexion.py si es necesario:
+
+	class Conexion:
+    	DATABASE = 'inventario_db'
+    	USERNAME = 'tu_usuario'  # Tu usuario de MySQL
+    	PASSWORD = 'tu_contraseña'  # Tu contraseña de MySQL
+    	DB_PORT = '3306'
+    	HOST = 'localhost'
+    	POOL_SIZE = 5
+    	POOL_NAME = 'inventario_productos_pool'
+    	pool = None
+
+Paso 4: Instalación de dependencias
+	El proyecto requiere la librería mysql-connector-python para conectar la aplicación con MySQL. Puedes instalarla usando pip:
+
+	pip install mysql-connector-python
+
+Paso 5: Estructura del código fuente
+
+	El código está organizado en varios archivos Python, como se muestra a continuación:
+
+        1. conexion.py: Contiene la clase Conexion, que maneja la conexión a la base de datos MySQL utilizando un pool de conexiones.
+
+	2. Producto.py: Define la clase Producto con los atributos nombre, cantidad, precio y categoria, y un método __str__ para representar los productos 	como cadenas.
+
+	3. GestionInventario.py: Contiene la clase GestionInventario con métodos para las operaciones CRUD: insertar, mostrar, buscar, actualizar y 	eliminar productos.
+
+	4. inventario_app.py: Es el archivo principal donde el usuario puede interactuar con el sistema de gestión de inventario a través de un menú.
+
+Paso 6: Ejecutar la aplicación
+
+	Una vez que hayas configurado la base de datos y los archivos, puedes ejecutar la aplicación con el siguiente comando:
+
+	inventario_app.py
+
+
+
