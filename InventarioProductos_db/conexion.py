@@ -3,8 +3,8 @@ from mysql.connector import Error
 
 class Conexion:
     DATABASE = 'inventario_db'
-    USERNAME = 'root'
-    PASSWORD = 'Nemrac1985'
+    USERNAME = 'tusuario'
+    PASSWORD = 'tucontraseña'
     DB_PORT = '3306'
     HOST = 'localhost'
     POOL_SIZE =5
