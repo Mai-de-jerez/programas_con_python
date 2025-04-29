@@ -3,8 +3,8 @@ from mysql.connector import Error
 
 class Conexion:
     DATABASE = 'zona_fit_db'
-    USERNAME = 'root'
-    PASSWORD = 'Nemrac1985'
+    USERNAME = 'tuusuario'
+    PASSWORD = 'tucontraseña'
     DB_PORT = '3306'
     HOST = 'localhost'
     POOL_SIZE =5
