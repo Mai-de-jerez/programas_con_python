@@ -4,8 +4,8 @@ from mysql.connector import Error
 class Conexion:
     DATABASE = 'zona_fit_db'
     USERNAME = 'root'
-    PASSWORD = 'Nemrac1985'
-    DB_PORT = '3306'
+    PASSWORD = 'tucontraseña'
+    DB_PORT = 'tuusuario'
     HOST = 'localhost'
     POOL_SIZE =5
     POOL_NAME = 'zona_fit_pool'
